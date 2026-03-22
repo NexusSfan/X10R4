@@ -7,7 +7,7 @@
 INCLUDES= -I../include
 NETOPTIONS= -DTCPCONN -DDUALTCP -DUNIXCONN
 CFLAGS= -ansi -O ${NETOPTIONS} ${INCLUDES}
-STDLIB= -ldbm
+STDLIB= -lgdbm_compat
 
 APOLLOLIB= ../libapollo/libapollo.a
 VS100LIB= ../libvs100/libvs100.a
