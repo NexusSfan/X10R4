@@ -2,6 +2,14 @@
 
 /* @(#)inline.h	1.2	(Berkeley)	8/20/84	*/
 
+#ifndef __INLINE_H__
+#define __INLINE_H__
+
+#ifdef __GNUC__
+#include <stdlib.h>
+#include <string.h>
+#endif
+
 /*
  * COMMENTCHAR is the character delimiting comments in the assembler.
  * LABELCHAR is the character that separates labels from instructions.
@@ -86,3 +94,5 @@ struct oparg {
  * Miscellaneous functions.
  */
 char *newline(), *copyline(), *doreplaceon();
+
+#endif
