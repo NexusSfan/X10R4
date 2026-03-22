@@ -6,7 +6,9 @@
 static char *rcsid_gcmd_c = "$Header: gcmd.c,v 10.6 86/02/01 16:18:44 tony Rel $";
 #endif	lint
 
+#ifndef __GNUC__
 char *malloc(), *strcpy();
+#endif
 
 #include "gedit.h"
 
@@ -15,11 +17,13 @@ int dx,dy,ends;		/* used during select operation */
 int redo;		/* set to one if arc cache should be recalculated */
 struct prototype *previous = NULL;	/* last proto to be edited */
 
+extern char mousechanged;
+
 /* process command input from user -- return 1 if it's time to exit, 0 otherwise */
 command()
   {	register int ch;
 	fptr cmd;
-	extern char mousechanged;
+	
 	char buf[100];
 
 	while (mousechanged) {

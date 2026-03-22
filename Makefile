@@ -19,6 +19,9 @@ xclock: Xlib/libX.a
 xdvi: Xlib/libX.a
 	cd xdvi; make
 
+xgedit: Xlib/libX.a
+	cd xgedit; make
+
 # X servers
 
 nest: libnest/libnest.a

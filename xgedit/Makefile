@@ -7,7 +7,7 @@ DESTDIR =
 CONFDIR = /usr/new
 INCLUDES = -I../include
 
-CFLAGS = -O $(INCLUDES)
+CFLAGS = -ansi -O $(INCLUDES)
 XLIB = ../Xlib/libX.a
 OBJS = gedit.o gcmd.o garc.o gx.o
 

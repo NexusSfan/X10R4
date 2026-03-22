@@ -8,7 +8,9 @@
 static char *rcsid_gedit_c = "$Header: gedit.c,v 10.6 86/02/01 16:18:53 tony Rel $";
 #endif	lint
 
+#ifndef __GNUC__
 char *malloc(), *gentry(), *strcpy(), *strcat();
+#endif
 
 struct state cur_state = {	/* everything about what we are doing */
   NULL, 1, 4, 0, 0, 0, 0, 0, 0, 16, 0, NULL, 0, 0, 0
@@ -332,6 +334,7 @@ rmalist(q)
 	}
 }
 
+#ifndef __GNUC__
 remove(p)
   register gptr p;
   {	register gptr q;
@@ -348,6 +351,7 @@ remove(p)
 	else if (p->s.type == SEGMENT) rmalist(p->s.cache);
 	free((char *)p);
 }
+#endif
 
 main(argc,argv)
   char **argv;

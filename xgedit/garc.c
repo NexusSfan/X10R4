@@ -11,7 +11,9 @@ static char *rcsid_garc_c = "$Header: garc.c,v 10.5 86/02/01 16:18:41 tony Rel $
 /* arc drawing routines */
 
 double sqrt(),atan2(),sin(),cos();
+#ifndef __GNUC__
 char *malloc();
+#endif
 
 /* construct a line object */
 gptr mline(x1,y1,x2,y2,next)
