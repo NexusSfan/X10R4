@@ -8,7 +8,7 @@ DESTDIR =
 INCLUDES = -I../include
 
 C2 = /lib/c2
-CFLAGS = -O ${INCLUDES}
+CFLAGS = -ansi -O ${INCLUDES}
 XLIB = ../Xlib/libX.a
 XLIB_H = ../Xlib/Xlib.h
 XLIB_P = ../Xlib/libX_p.a

@@ -49,7 +49,7 @@ X/servers/Xnest: libnest/libnest.a
 	cd X; make nest
 
 # libraries
-LIBRARIES = Xlib/libX.a libnest/libnest.a
+LIBRARIES = Xlib/libX.a libnest/libnest.a XMenu/libXMenu.a
 libraries: $(LIBRARIES)
 
 Xlib/libX.a:
@@ -58,9 +58,13 @@ Xlib/libX.a:
 libnest/libnest.a: Xlib/libX.a
 	cd libnest; make
 
+XMenu/libXMenu.a:
+	cd XMenu; make
+
 # misc
 clean:
 	cd Xlib; make clean
+	cd XMenu; make clean
 	cd libnest; make clean
 	cd xwm; make clean
 	cd bitmap; make clean
