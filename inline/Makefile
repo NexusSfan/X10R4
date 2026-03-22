@@ -1,7 +1,7 @@
 #	@(#)Makefile	1.3	(Berkeley)	84/08/20
 #
 DESTDIR=
-CFLAGS=	-O
+CFLAGS=	-ansi -O
 LFLAGS=	
 
 # The program itself

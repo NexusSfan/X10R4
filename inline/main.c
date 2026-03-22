@@ -18,6 +18,23 @@ struct pats *inittables[] = {
 	0
 };
 
+int bufhead, buftail;
+char line[QUEUESIZE][MAXLINELEN];
+
+struct pats *patshdr[HSHSIZ];
+
+/*
+ * This table defines the set of instructions that demark the
+ * end of a basic block.
+ */
+struct inststoptbl {
+	char	*name;
+	struct	inststoptbl *next;
+	int	size;
+};
+struct inststoptbl *inststoptblhdr[HSHSIZ];
+extern struct inststoptbl inststoptable[];
+
 /*
  * Statistics collection
  */

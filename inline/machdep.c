@@ -4,10 +4,6 @@
 static char sccsid[] = "@(#)machdep.c	1.4	(Berkeley)	9/20/84";
 #endif not lint
 
-#include <stdio.h>
-#include <ctype.h>
-#include "inline.h"
-
 /*
  * The routines and tables in this file must be rewritten
  * for each new machine that this program is ported to.
