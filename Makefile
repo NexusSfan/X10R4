@@ -6,6 +6,8 @@
 # Subdirectories that have makefiles of their own.
 
 # programs
+PROGRAMS = xwm xwininfo xclock xdvi xgedit
+programs: $(PROGRAMS)
 
 xwm: Xlib/libX.a
 	cd xwm; make
@@ -24,9 +26,9 @@ xgedit: Xlib/libX.a
 
 # X servers
 
-nest: libnest/libnest.a
+Xnest: X/servers/Xnest
 
-X/servers/Xnest:
+X/servers/Xnest: libnest/libnest.a
 	cd X; make nest
 
 # libraries
@@ -36,3 +38,12 @@ Xlib/libX.a:
 
 libnest/libnest.a:
 	cd libnest; make
+
+# misc
+clean:
+	cd xwm; make clean
+	cd xwininfo; make clean
+	cd xclock; make clean
+	cd xdvi; make clean
+	cd xgedit; make clean
+	cd X; make clean
