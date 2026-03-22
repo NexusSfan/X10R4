@@ -8,7 +8,7 @@
 all: $(PROGRAMS) $(LIBRARIES)
 
 # programs
-PROGRAMS = xwm xwininfo xclock xdvi xgedit xinit
+PROGRAMS = xwm xwininfo xclock xdvi xgedit xinit bitmap
 programs: $(PROGRAMS)
 
 xwm: Xlib/libX.a
@@ -29,6 +29,9 @@ xgedit: Xlib/libX.a
 xinit:
 	cd xinit; make
 
+bitmap: Xlib/libX.a
+	cd bitmap; make
+
 # X servers
 
 Xnest: X/servers/Xnest
@@ -43,7 +46,7 @@ libraries: $(LIBRARIES)
 Xlib/libX.a:
 	cd Xlib; make
 
-libnest/libnest.a:
+libnest/libnest.a: Xlib/libX.a
 	cd libnest; make
 
 # misc
@@ -51,6 +54,7 @@ clean:
 	cd Xlib; make clean
 	cd libnest; make clean
 	cd xwm; make clean
+	cd bitmap; make clean
 	cd xwininfo; make clean
 	cd xclock; make clean
 	cd xdvi; make clean

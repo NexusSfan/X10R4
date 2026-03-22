@@ -177,7 +177,7 @@ Initialize ()
 /* ProcessCommandEvent returns -1 unless a command was actually invoked,
 in which case it returns the command number. */
 
-static int ProcessCommandEvent (data, command, event)
+int ProcessCommandEvent (data, command, event)
   struct dialog_data *data;
   struct command_data *command;
   XEvent *event;
@@ -218,7 +218,7 @@ static int ProcessCommandEvent (data, command, event)
   }
 
 
-static ProcessDialogWindowEvent (data, event)
+ProcessDialogWindowEvent (data, event)
   struct dialog_data *data;
   XEvent *event;
   {
@@ -234,7 +234,7 @@ static ProcessDialogWindowEvent (data, event)
   }
 
 
-static InvertCommand (data, command)
+InvertCommand (data, command)
   struct dialog_data *data;
   struct command_data *command;
   {
@@ -243,7 +243,7 @@ static InvertCommand (data, command)
   }
 
 
-static DeterminePlace (w, px, py)
+DeterminePlace (w, px, py)
   Window w;
   int *px, *py;
   {

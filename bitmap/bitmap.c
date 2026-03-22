@@ -44,8 +44,10 @@ static char *rcsid_bitmap_c = "$Header: bitmap.c,v 10.9 86/11/19 19:13:23 jg Rel
 #define max(x,y) ((x < y) ? y : x)
 
 /* error handling stuff */
+#ifndef __GNUC__
 extern int errno;
 extern char *sys_errlist[];
+#endif
 
 /* global "constants" -- set once at startup time */
 /* the first few variables are not static because they are shared
@@ -125,7 +127,9 @@ static boolean changed = FALSE;
 
 static enum RepaintGridType {e_AgainstBackground, e_AgainstForeground, e_Invert};
 
+#ifndef __GNUC__
 extern char *malloc();
+#endif
 
 main (argc, argv)
   int argc;
@@ -179,7 +183,13 @@ SetUp (argc, argv)
   file = fopen (filename, "r");
   if (!file && (errno != ENOENT)) {
     fprintf (stderr, "%s: could not open file '%s' for reading -- %s\n",
-      progname, filename, sys_errlist[errno]);
+      progname, filename,
+#ifndef __GNUC__
+      sys_errlist[errno]
+#else
+      strerror(errno)
+#endif
+    );
     exit (1);
     }
       
@@ -1815,10 +1825,22 @@ int HandleOutputError(e)
   char *tmp_filename;
   if (e == e_rename)
     sprintf (msg1, "Can't rename %s to %s -- %s",
-      filename, backup_filename, sys_errlist[errno]);
+      filename, backup_filename,
+#ifndef __GNUC__
+      sys_errlist[errno]
+#else
+      strerror(errno)
+#endif
+    );
   else
     sprintf (msg1, "Can't write on file %s -- %s",
-      filename, sys_errlist[errno]);
+      filename,
+#ifndef __GNUC__
+      sys_errlist[errno]
+#else
+      strerror(errno)
+#endif
+    );
   tmp_filename = TmpFileName (filename);
   sprintf (msg2, "Should I write output to file %s?", tmp_filename);
   strings[0] = "Yes";
