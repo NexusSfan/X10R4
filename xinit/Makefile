@@ -6,7 +6,7 @@
 
 DESTDIR=
 CONFDIR= /usr/new
-INCLUDES= -I../include
+INCLUDES= -ansi -I../include
 
 CFLAGS= -O $(INCLUDES)
 
