@@ -30,6 +30,7 @@ without express or implied warranty.
 #include <net/if.h>
 #include <ifaddrs.h>
 #include <arpa/inet.h>
+#include <time.h>
 
 typedef unsigned int u_int;
 typedef unsigned char u_char;

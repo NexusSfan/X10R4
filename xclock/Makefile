@@ -7,7 +7,7 @@
 #
 
 DESTDIR =
-INCLUDES = -I../include
+INCLUDES = -ansi -I../include
 
 CONFDIR = /usr/new
 XLIB = ../Xlib/libX.a
