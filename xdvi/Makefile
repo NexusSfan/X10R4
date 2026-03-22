@@ -19,7 +19,7 @@ xdvi: $(OBJS)
 dv.o: dvi.h pxl.h
 
 table.c: mktable
-	mktable > table.c
+	./mktable > table.c
 
 mktable: mktable.c
 	cc $(CFLAGS) -o mktable mktable.c
