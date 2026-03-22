@@ -6,7 +6,7 @@
 # -DDNETCONN allows DECnet connections
 INCLUDES= -I../include
 NETOPTIONS= -DTCPCONN -DDUALTCP -DUNIXCONN
-CFLAGS= -O ${NETOPTIONS} ${INCLUDES}
+CFLAGS= -ansi -O ${NETOPTIONS} ${INCLUDES}
 STDLIB= -ldbm
 
 APOLLOLIB= ../libapollo/libapollo.a

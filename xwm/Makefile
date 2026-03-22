@@ -8,7 +8,7 @@ DESTDIR =
 CONFDIR = /usr/new
 INCLUDES = -I../include
 
-CFLAGS = -O $(INCLUDES)
+CFLAGS = -ansi -O $(INCLUDES)
 XH = ../Xlib/Xlib.h
 
 .SUFFIXES: .o .h .c

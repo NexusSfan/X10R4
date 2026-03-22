@@ -8,7 +8,7 @@ DESTDIR=
 
 INCLUDES= -I../include
 C2= /lib/c2
-CFLAGS= -O ${INCLUDES} ${NETOPTIONS}
+CFLAGS= -ansi -O ${INCLUDES} ${NETOPTIONS}
 
 .SUFFIXES: .o .h .c
 

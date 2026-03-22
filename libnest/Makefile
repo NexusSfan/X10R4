@@ -5,7 +5,7 @@
 #
 
 INCLUDES= -I../include
-CFLAGS= -O ${INCLUDES}
+CFLAGS= -ansi -O ${INCLUDES}
 
 OBJS= nest.o
 
