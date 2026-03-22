@@ -16,6 +16,9 @@ xwininfo: Xlib/libX.a
 xclock: Xlib/libX.a
 	cd xclock; make
 
+xdvi: Xlib/libX.a
+	cd xdvi; make
+
 # X servers
 
 nest: libnest/libnest.a

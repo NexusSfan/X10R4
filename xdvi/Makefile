@@ -6,7 +6,7 @@
 DESTDIR=
 CONFDIR= /usr/new
 INCLUDES= -I../include
-CFLAGS= -O ${INCLUDES}
+CFLAGS= -ansi -O ${INCLUDES}
 LIBS= ../Xlib/libX.a
 
 OBJS= dv.o table.o
@@ -22,7 +22,7 @@ table.c: mktable
 	mktable > table.c
 
 mktable: mktable.c
-	cc -o mktable mktable.c
+	cc $(CFLAGS) -o mktable mktable.c
 
 install: all
 	install xdvi ${DESTDIR}${CONFDIR}

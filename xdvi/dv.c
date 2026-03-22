@@ -117,7 +117,9 @@ unsigned long num();
 long snum();
 
 extern char reverse_byte[];
+#ifndef __GNUC__
 char *malloc(), *calloc(), *index();
+#endif
 
 int GXfunc;
 int backwards = 0;
