@@ -5,31 +5,40 @@
 #
 # Subdirectories that have makefiles of their own.
 
-all: $(PROGRAMS) $(LIBRARIES)
+X ?= Xnest
+
+all: programs libraries $(X)
 
 # programs
-PROGRAMS = xwm xwininfo xclock xdvi xgedit xinit bitmap
+PROGRAMS = xwm/xwm xwininfo/xwininfo xclock/xclock xdvi/xdvi xgedit/xgedit xinit/xinit bitmap/bitmap
 programs: $(PROGRAMS)
 
-xwm: Xlib/libX.a
+xwm: xwm/xwm
+xwm/xwm: Xlib/libX.a
 	cd xwm; make
 
-xwininfo: Xlib/libX.a
+xwininfo: xwininfo/xwininfo
+xwininfo/xwininfo: Xlib/libX.a
 	cd xwininfo; make
 
-xclock: Xlib/libX.a
+xclock: xclock/xclock
+xclock/xclock: Xlib/libX.a
 	cd xclock; make
 
-xdvi: Xlib/libX.a
+xdvi: xdvi/xdvi
+xdvi/xdvi: Xlib/libX.a
 	cd xdvi; make
 
-xgedit: Xlib/libX.a
+xgedit: xgedit/xgedit
+xgedit/xgedit: Xlib/libX.a
 	cd xgedit; make
 
-xinit:
+xinit: xinit/xinit
+xinit/xinit:
 	cd xinit; make
 
-bitmap: Xlib/libX.a
+bitmap: bitmap/bitmap
+bitmap/bitmap: Xlib/libX.a
 	cd bitmap; make
 
 # X servers
