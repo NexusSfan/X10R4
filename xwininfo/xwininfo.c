@@ -21,6 +21,9 @@ static char *rcsid_xhost_c = "$Header: xwininfo.c,v 10.6 86/11/19 19:59:23 jg Re
 #include "../cursors/target.cursor"
 #include "../cursors/target_mask.cursor"
 #include <strings.h>
+#ifdef __GNUC__
+#include <errno.h>
+#endif
 
 typedef enum _bool {FALSE, TRUE} Bool;
 
@@ -31,8 +34,6 @@ typedef enum _bool {FALSE, TRUE} Bool;
 #define FAILURE 0
 
 char *index();
-
-extern int errno;
 
 main(argc, argv)
     int argc;

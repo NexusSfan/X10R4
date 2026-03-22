@@ -13,7 +13,7 @@ INCLUDES = -I../include
 CONFDIR = /usr/new
 XLIB = ../Xlib/libX.a
 XH = ../Xlib/Xlib.h
-CFLAGS = -O $(INCLUDES)
+CFLAGS = -ansi -O $(INCLUDES)
 CLIBS =
 
 .SUFFIXES: .o .h .c .a
