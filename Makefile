@@ -32,6 +32,8 @@ X/servers/Xnest: libnest/libnest.a
 	cd X; make nest
 
 # libraries
+LIBRARIES = Xlib/libX.a libnest/libnest.a
+libraries: $(LIBRARIES)
 
 Xlib/libX.a:
 	cd Xlib; make
@@ -40,7 +42,11 @@ libnest/libnest.a:
 	cd libnest; make
 
 # misc
+all: programs libraries
+
 clean:
+	cd Xlib; make clean
+	cd libnest; make clean
 	cd xwm; make clean
 	cd xwininfo; make clean
 	cd xclock; make clean
