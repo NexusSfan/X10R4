@@ -1,6 +1,9 @@
 /* $Header: bitmaps.h,v 10.1 86/11/30 15:29:52 jg Rel $ */
 /* Copyright (c) 1986 	Chris Guthrie */
 
+#ifndef __BITMAPS_H__
+#define __BITMAPS_H__
+
 /**** These are the ships ****/
 #define VIEWS		16
 #define ship_width	16
@@ -632,3 +635,5 @@ static short icon_bits[] = {
    0x0000, 0x0000, 0x0000, 0x0000,
    0x0000, 0x0000, 0x0000, 0x0000,
    0x0000, 0x0000};
+
+#endif

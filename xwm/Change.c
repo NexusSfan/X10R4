@@ -51,7 +51,11 @@ Bool Change(window, x0, y0)
     /*
      * Gather info about the event window.
      */
+#ifdef __GNUC__
+    status = XQueryWindow(window, window_info);
+#else
     status = XQueryWindow(window, &window_info);
+#endif
     if (status == FAILURE) {
 	/*
 	 * If there is a query error, abort the operation.
@@ -71,7 +75,11 @@ Bool Change(window, x0, y0)
 	/*
 	 * Gather info about the assoc window.
 	 */
+#ifdef __GNUC__
+	status = XQueryWindow(assoc, assoc_info);
+#else
 	status = XQueryWindow(assoc, &assoc_info);
+#endif
 	if (status == FAILURE) {
 	    /*
 	     * If there is a query error, abort the operation.

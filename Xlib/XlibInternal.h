@@ -20,8 +20,10 @@
 #include <errno.h>
 
 extern int errno;			/* Internal system error number. */
+#ifndef __GNUC__
 extern char *malloc();			/* commonly used in the library. */
 extern char *realloc();			/* used with some frequency.	 */
+#endif
 
 extern Display *_XlibCurrentDisplay;	/* Currently active Display. */
 

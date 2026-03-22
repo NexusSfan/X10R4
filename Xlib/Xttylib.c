@@ -176,6 +176,9 @@ TTYPrintf(t, format, args)
 {
 #define TTY_BUFSIZE 2048
 	char buffer[TTY_BUFSIZE+1];
+#ifdef __GNUC__
+        vsnprintf(buffer, sizeof(buffer), format, args);
+#else
 	struct _iobuf _strbuf;
 
 	_strbuf._flag = _IOWRT+_IOSTRG;
@@ -184,6 +187,7 @@ TTYPrintf(t, format, args)
 	_doprnt(format, &args, &_strbuf);
 	_strbuf._cnt++;	    /* Be sure there's room for the \0 */
 	putc('\0', &_strbuf);
+#endif
 	TTYPutString(t, buffer);
 #undef TTY_BUFSIZE
 }
@@ -193,15 +197,25 @@ static initial_stdout = -1;
 SetStdout(t)
 	TTYWindow *t;
 {
-	if (initial_stdout == -1) initial_stdout = stdout->_file;
+#ifdef __GNUC__
+	if (initial_stdout == -1) initial_stdout = stdout->_fileno;
 	fflush(stdout);
-	stdout->_file = t->file;
+	stdout->_fileno = t->file;
+#else
+	if (initial_stdout == -1) initial_stdout = stdout->_file;
+        fflush(stdout);
+        stdout->_file = t->file;
+#endif
 }
 
 ResetStdout()
 {
 	fflush(stdout);
+#ifdef __GNUC__
+	stdout->_fileno = initial_stdout;
+#else
 	stdout->_file = initial_stdout;
+#endif
 	initial_stdout = -1;
 }
 

@@ -5,7 +5,7 @@
 
 #include "XlibInternal.h"
 
-caddr_t XFetchBytes (nbytes)
+char * XFetchBytes (nbytes)
     	register int *nbytes;
 {
 	register Display *dpy;

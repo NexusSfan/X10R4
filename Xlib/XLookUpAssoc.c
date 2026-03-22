@@ -12,7 +12,7 @@
  * in the table the routine will return a NULL pointer.  All XId's are relative
  * to the currently active Display.
  */
-caddr_t XLookUpAssoc(table, x_id)
+char * XLookUpAssoc(table, x_id)
 	register XAssocTable *table;	/* XAssocTable to search in. */
 	register XId x_id;			/* XId to search for. */
 {

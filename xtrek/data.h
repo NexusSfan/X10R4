@@ -1,6 +1,9 @@
 /* $Header: data.h,v 10.1 86/11/30 15:30:10 jg Rel $ */
 /* Copyright (c) 1986 	Chris Guthrie */
 
+#ifndef __DATA_H__
+#define __DATA_H__
+
 extern struct player *players;
 extern struct player *me;
 extern struct torp *torps;
@@ -29,3 +32,5 @@ extern char *teamshort[];
 
 extern Font dfont, bfont;
 extern FontInfo *dfontinfo, *bfontinfo;
+
+#endif

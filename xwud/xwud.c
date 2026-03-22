@@ -35,7 +35,10 @@ static char *rcsid_xwud_c = "$Header: xwud.c,v 10.10 86/11/25 08:44:25 jg Rel $"
 #include <stdio.h>
 #include <strings.h>
 #include <sys/types.h>
+
+#ifndef __GNUC__
 extern char *calloc();
+#endif
 
 #include <X/XWDFile.h>
 

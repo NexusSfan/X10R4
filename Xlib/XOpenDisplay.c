@@ -35,7 +35,9 @@ Display *XOpenDisplay (display)
  
 	/* External declarations. */
 	extern char *getenv();
+	#ifndef __GNUC__
 	extern char *malloc();
+	#endif
 	extern struct hostent *gethostbyname();
  
 	/*

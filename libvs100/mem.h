@@ -31,6 +31,9 @@
  ****************************************************************************/
 
 #include "param.h"
+#ifdef __GNUC__
+typedef void* caddr_t;
+#endif
 
 typedef struct _VSArea {
 	struct _VSArea *next;

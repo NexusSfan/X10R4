@@ -1,6 +1,9 @@
 /* $Header: sintab.h,v 10.1 86/11/30 15:30:49 jg Rel $ */
 /* Copyright (c) 1986 	Chris Guthrie */
 
+#ifndef __SINTAB_H__
+#define __SINTAB_H__
+
 double sin[] = {
     -1.0000,
     -0.9997,
@@ -517,3 +520,5 @@ double cos[] = {
     -0.0493,
     -0.0247
 };
+
+#endif

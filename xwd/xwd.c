@@ -37,7 +37,9 @@ static char *rcsid_xwd_c = "$Header: xwd.c,v 10.12 86/11/25 09:01:08 jg Rel $";
 #include <stdio.h>
 #include <strings.h>
 
+#ifndef __GNUC__
 char *calloc();
+#endif
 
 typedef enum _bool {FALSE, TRUE} Bool;
 
@@ -116,7 +118,7 @@ main(argc, argv)
 	    standard_out = FALSE;
 	    continue;
 	}
-	if(strncmp(argv[i], "-xy") == 0) {
+	if(strncmp(argv[i], "-xy", 3) == 0) {
 	    pixmap_format = XYFormat;
 	    continue;
 	}

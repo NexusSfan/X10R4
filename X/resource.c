@@ -38,8 +38,12 @@ extern int errno;
 extern u_char Xstatus;
 extern DEVICE device;
 
+#ifndef __GNUC__
 char *Xalloc(), *Xrealloc(), *malloc(), *realloc();
 char *index(), *strcpy(), *strcat();
+#else
+char *Xalloc(), *Xrealloc();
+#endif
 FONT *GetFont();
 CURSOR *StoreCursor();
 

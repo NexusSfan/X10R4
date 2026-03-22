@@ -21,7 +21,9 @@
 
 #define XOPTIONFILE "/.Xdefaults"	/* name in home directory of options
 					   file. */
+#ifndef __GNUC__
 extern char *malloc();
+#endif
 
 static struct ent {
 	struct ent *left;		/* next option to left		*/
@@ -59,7 +61,7 @@ char *XGetDefault(prog, name)
 	return(NULL);			/* if no match, let him know	*/
 }
 
-static ReadFile(prog)
+ReadFile(prog)
 	char *prog;			/* program name to match 	    */
 {
 	register char *point,*colon;	/* where in the line the keys are   */
@@ -146,13 +148,15 @@ static ReadFile(prog)
 #define	RIGHTSLANTED	1
 #define	R_REBALANCE	2
 
-static insert(name, val, ent)
+insert(name, val, ent)
 register char *name, *val;
 register struct ent **ent;
 {
 	register struct ent *ent1, *ent2;
 	register int cmp;
+	#ifndef __GNUC__
 	char *calloc();
+	#endif
 
 	if(*ent == NULL) {	/* not in tree, insert it */
 		if((*ent = (struct ent *)calloc(1, sizeof(struct ent))) ==

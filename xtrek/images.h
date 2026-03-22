@@ -1,6 +1,9 @@
 /* $Header: images.h,v 10.1 86/11/30 15:30:28 jg Rel $ */
 /* Copyright (c) 1986 	Chris Guthrie */
 
+#ifndef __IMAGES_H__
+#define __IMAGES_H__
+
 #define VIEWS		16
 #define ship_width	16
 #define ship_height	16
@@ -272,3 +275,5 @@ static short ori_bits[VIEWS][16] = {
    0x7fe0, 0x67f0, 0xe3e0, 0xc730, 0xc638, 0x8630, 0x0c30, 0x0460
   },
 };
+
+#endif

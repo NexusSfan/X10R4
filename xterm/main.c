@@ -901,7 +901,9 @@ get_terminal ()
 	register Screen *screen = &term.screen;
 	register int try;
 	Color cdef;
-	char *malloc();
+#ifndef __GNU__
+char *malloc();
+#endif
 	
 	for (try = 10 ; ; ) {
 	    if (screen->display = XOpenDisplay(display))

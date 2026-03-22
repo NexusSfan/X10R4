@@ -10,7 +10,9 @@
  *
  */
 
+#ifndef __GNUC__
 extern char *malloc(), *calloc(), *realloc(), *alloca();
+#endif
 #ifdef notdef
 #include <sys/types.h>
 #endif

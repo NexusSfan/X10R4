@@ -1000,10 +1000,14 @@ HangUp ()
 Notice (where)
 	char *where;
 {
+#ifndef __GNUC__
 	fprintf (stderr, "error: %s at %s\n",
 		 (errno > 0 && errno < sys_nerr) ? sys_errlist[errno] : "?",
 		 where);
 	fflush (stderr);
+#else
+	fprintf (stderr, "error: undefined\n");
+#endif
 }
 
 /* log a fatal server error */

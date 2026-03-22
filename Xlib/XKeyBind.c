@@ -303,7 +303,7 @@ XRebindCode (keycode, metabits, str, nbytes)
     }
     
 
-static Unbind (keycode, metabits)
+Unbind (keycode, metabits)
     unsigned int keycode, metabits;
     {
     register RuntimeTableEntry *entry;

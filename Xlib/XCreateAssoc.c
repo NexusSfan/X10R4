@@ -5,8 +5,10 @@
 
 #include "XlibInternal.h"
 
+#ifndef __GNUC__
 char *malloc();
 char *calloc();
+#endif
 /*
  * XCreateAssocTable - Create an XAssocTable.  The size argument should be
  * a power of two for efficiency reasons.  Some size suggestions: use 32

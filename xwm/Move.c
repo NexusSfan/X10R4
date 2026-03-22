@@ -45,7 +45,11 @@ Move(window, x, y)
     /*
      * Gather info on the event window since we may move it.
      */
+#ifndef __GNUC__
     status = XQueryWindow(window, &window_info);
+#else
+    status = XQueryWindow(window, window_info);
+#endif
     if (status == FAILURE) {
         /*
 	 * If there is a query error, abort the operation and return.

@@ -76,7 +76,9 @@
 
 #define mar_width 2
 
+#ifndef __GNUC__
 char *calloc(), *malloc(), *realloc();
+#endif
 
 /* The following variable is sometimes set by TextPutString to temporarily
    disable screen updating. */
@@ -834,6 +836,9 @@ TextPrintf(t, format, args)
 	char *format;
 {
 	char buffer[TEXT_BUFSIZE+1];
+#ifdef __GNUC__
+	vsnprintf(buffer, sizeof(buffer), format, args);
+#else
 	struct _iobuf _strbuf;
 
 	_strbuf._flag = _IOWRT+_IOSTRG;
@@ -842,5 +847,6 @@ TextPrintf(t, format, args)
 	_doprnt(format, &args, &_strbuf);
 	_strbuf._cnt++;	    /* Be sure there's room for the \0 */
 	putc('\0', &_strbuf);
+#endif
 	TextPutString(t, buffer);
 }

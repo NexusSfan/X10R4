@@ -1,6 +1,9 @@
 /* $Header: struct.h,v 10.1 86/11/30 15:31:00 jg Rel $ */
 /* Copyright (c) 1986 	Chris Guthrie */
 
+#ifndef __STRUCT_H__
+#define __STRUCT_H__
+
 struct status {
     int active;
 };
@@ -202,3 +205,4 @@ struct obtype {
     int o_num;
 };
 
+#endif

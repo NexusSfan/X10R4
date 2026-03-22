@@ -38,7 +38,9 @@ static short pik_mask_bits[] = {
 
 #define BASEDELTA (1<<8)
 
+#ifndef __GNUC__
 char *malloc();
+#endif
 
 Window win;
 u_char *buf;

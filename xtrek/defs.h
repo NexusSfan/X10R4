@@ -1,6 +1,9 @@
 /* $Header: defs.h,v 10.1 86/11/30 15:30:19 jg Rel $ */
 /* Copyright (c) 1986 	Chris Guthrie */
 
+#ifndef __DEFS_H__
+#define __DEFS_H__
+
 #define MAXPLAYER 16
 #define MAXPLANETS 40
 #define MAXTORP 12
@@ -49,13 +52,18 @@
 /* Data files to make the game play across daemon restarts. */
 
 /* #define DIR		"/eros/staff/chris/nt */
-#define DIR		"/usr/games/lib/xtrek
+#define DIR		"/usr/games/lib/xtrek"
 
-#define PLFILE		DIR/.planets"
-#define SCOREFILE	DIR/.scores"
-#define MOTD		DIR/.motd"
-#define DAEMON		DIR/daemon"
-#define ROBOT		DIR/robot"
+#define PLFILE		"/usr/games/lib/xtrek/.planets"
+#define SCOREFILE	"/usr/games/lib/xtrek/.scores"
+#define MOTD		"/usr/games/lib/xtrek/.motd"
+#define DAEMON		"/usr/games/lib/xtrek/daemon"
+#define ROBOT		"/usr/games/lib/xtrek/robot"
+
+#ifdef __GNUC__
+#include <unistd.h>
+#define _NFILE sysconf(_SC_OPEN_MAX)
+#endif
 
 /* Other stuff that Ed added */
 
@@ -83,3 +91,5 @@
 	(friendlyPlanet(p) ? bfont : dfont)
 #define shipFont(p)		\
 	(myPlayer(p) ? bfont : dfont)
+
+#endif

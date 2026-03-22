@@ -1,6 +1,9 @@
 /* $Header: planets.h,v 10.1 86/11/30 15:30:38 jg Rel $ */
 /* Copyright (c) 1986 	Chris Guthrie */
 
+#ifndef __PLANETS_H__
+#define __PLANETS_H__
+
 /*
 
 struct planet {
@@ -56,3 +59,6 @@ struct planet pdata[MAXPLANETS] = {
     { 38, ORI, ORI, 70000, 93000, "Markus II", 30, ORI },
     { 39, ORI, ORI, 85000, 70000, "Oren", 30, ORI }
 };
+
+
+#endif

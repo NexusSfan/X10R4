@@ -42,7 +42,11 @@ LowerIconify(window, x, y)
     /*
      * Get info on the event window.
      */
-    status = XQueryWindow(window, &window_info);
+#ifdef __GNUC__
+    status = XQueryWindow(window, window_info);
+#else
+    status = XQueryWindow(window, window_info);
+#endif
     if (status == FAILURE) return;
 
     /*
@@ -189,7 +193,11 @@ LowerIconify(window, x, y)
 	/*
 	 * Determine the size of the icon window.
 	 */ 
+#ifndef __GNUC__
 	status = XFetchName(window, &name);
+#else
+	status = XFetchName(window, name);
+#endif
 	if (status == FAILURE) return;
 	icon_h = IFontInfo.height + (IPadding << 1);
 	icon_w = XQueryWidth(name, IFont);
@@ -254,7 +262,11 @@ LowerIconify(window, x, y)
 	/*
 	 * Get info on the icon window.
 	 */
+#ifndef __GNUC__
 	status = XQueryWindow(icon, &icon_info);
+#else
+	status = XQueryWindow(icon, icon_info);
+#endif
 	if (status == FAILURE) return;
 
 	/*

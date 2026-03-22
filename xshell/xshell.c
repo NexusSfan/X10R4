@@ -51,7 +51,9 @@ static char *rcsid_xshell_c = "$Header: xshell.c,v 10.7 86/11/19 19:55:45 jg Rel
 
 extern KeyMapEntry StdMap[];
 
+#ifndef __GNUC__
 extern char *malloc();
+#endif
 
 #define strneq(a,b) (strncmp ((a), (b), strlen(a)) == 0)
 #define streq(a,b) (strcmp ((a), (b)) == 0)

@@ -86,7 +86,7 @@ Status XReadBitmapFile(filename, width, height, data, x_hot, y_hot)
     }
 
 /* StringEndsWith returns TRUE if "s" ends with "suffix", else returns FALSE */
-static boolean StringEndsWith (s, suffix)
+boolean StringEndsWith (s, suffix)
   char *s, *suffix;
   {
   int s_len = strlen (s);

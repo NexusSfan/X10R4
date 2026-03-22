@@ -5,7 +5,7 @@
 
 #include "XlibInternal.h"
 
-caddr_t XFetchBuffer (nbytes, buffer)
+char * XFetchBuffer (nbytes, buffer)
     	register int *nbytes;
 	int buffer;
 {

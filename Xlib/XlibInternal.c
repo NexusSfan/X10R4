@@ -266,7 +266,9 @@ _XEnq (dpy, event)
 	register XEvent *event;
 {
 	register _QEvent *qelt;
+#ifndef __GNUC__
 	extern char *malloc();
+#endif
 
 	if (
 		/* If we are squishing MouseMoved events AND ... */
