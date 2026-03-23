@@ -57,6 +57,7 @@ LIBRARIES = Xlib/libX.a libnest/libnest.a libnest/libnest11.a XMenu/libXMenu.a
 libraries: $(LIBRARIES)
 
 Xlib/libX.a:
+	mkdir -p Xlib/profiled
 	cd Xlib; make
 
 libnest/libnest.a:
@@ -66,6 +67,7 @@ libnest/libnest11.a:
 	cd libnest11; make
 
 XMenu/libXMenu.a:
+	mkdir -p XMenu/profiled
 	cd XMenu; make
 
 # misc
