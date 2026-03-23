@@ -46,7 +46,7 @@ bitmap/bitmap: Xlib/libX.a
 Xnest: X/servers/Xnest
 Xnest11: X/servers/Xnest11
 
-X/servers/Xnest: libnest/libnest.a
+X/servers/Xnest: libnest/libnest.a Xlib/libX.a
 	cd X; make nest
 
 X/servers/Xnest11: libnest/libnest11.a
@@ -75,6 +75,7 @@ clean:
 	cd Xlib; make clean
 	cd XMenu; make clean
 	cd libnest; make clean
+	cd libnest11; make clean
 	cd xwm; make clean
 	cd bitmap; make clean
 	cd xwininfo; make clean
