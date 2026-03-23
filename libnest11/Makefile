@@ -5,7 +5,7 @@
 #
 
 INCLUDES= -I../include -lX11-xcb -lX11 -lxcb
-CFLAGS= -ansi -O ${INCLUDES}
+CFLAGS= -O ${INCLUDES}
 
 OBJS= nest11.o
 
