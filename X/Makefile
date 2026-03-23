@@ -17,6 +17,7 @@ QDSSLIB= ../libqdss/libqdss.a ${QILLIB}
 XSUNLIB= ../libsun/libsun.a
 SUNLIB= $(XSUNLIB) -lsunwindow -lpixrect
 NESTLIB= ../libnest/libnest.a ../Xlib/libX.a
+NEST11LIB= ../libnest11/libnest11.a ../Xlib/libX.a
 XISLIB= ../libis/libis.a
 ISLIB= $(XISLIB) -lgip
 BITBLT= ../libibm/bitblt/bitblt.a
@@ -58,6 +59,9 @@ sun: $(OBJS) $(XSUNLIB)
 
 nest: $(OBJS) $(NESTLIB)
 	${CC} -o servers/Xnest $(OBJS) $(STDLIB) $(NESTLIB) 
+
+nest11: $(OBJS) $(NEST11LIB)
+	${CC} -o servers/Xnest11 $(OBJS) $(STDLIB) $(NEST11LIB)
 
 is: $(OBJS) $(XISLIB)
 	${CC} ${CFLAGS} -o servers/Xis $(OBJS) $(STDLIB) $(ISLIB)

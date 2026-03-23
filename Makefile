@@ -44,19 +44,26 @@ bitmap/bitmap: Xlib/libX.a
 # X servers
 
 Xnest: X/servers/Xnest
+Xnest11: X/servers/Xnest11
 
 X/servers/Xnest: libnest/libnest.a
 	cd X; make nest
 
+X/servers/Xnest11: libnest/libnest11.a
+	cd X; make nest11
+
 # libraries
-LIBRARIES = Xlib/libX.a libnest/libnest.a XMenu/libXMenu.a
+LIBRARIES = Xlib/libX.a libnest/libnest.a libnest/libnest11.a XMenu/libXMenu.a
 libraries: $(LIBRARIES)
 
 Xlib/libX.a:
 	cd Xlib; make
 
-libnest/libnest.a: Xlib/libX.a
+libnest/libnest.a:
 	cd libnest; make
+
+libnest/libnest11.a:
+	cd libnest11; make
 
 XMenu/libXMenu.a:
 	cd XMenu; make
