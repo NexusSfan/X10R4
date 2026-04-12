@@ -57,8 +57,6 @@ static char *hcolors[4];		/* Color values used in menu hdrs. */
 static char *mcolors[2];		/* Color values used in menus. */
 MenuLink *menu_link;			/* Temporary menu link pointer. */
 
-char *calloc();
-
 %}
 
 %union {

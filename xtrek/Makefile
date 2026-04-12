@@ -72,7 +72,7 @@ r_OBJS =	data.o \
 LIBS = ../Xlib/libX.a -lm
 
 INCLUDES = -I../include
-CFLAGS = -O $(INCLUDES)
+CFLAGS = -O $(INCLUDES) -ansi
 
 all: xtrek daemon robot copilot
 
