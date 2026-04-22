@@ -6,10 +6,10 @@ static char *rcsid_rmove_c = "$Header: rmove.c,v 10.1 86/11/30 15:27:49 jg Rel $
 #include <X/Xlib.h>
 #include <stdio.h>
 #include <signal.h>
+#include <math.h>
 #include "defs.h"
 #include "struct.h"
 #include "data.h"
-#include "sintab.h"
 
 #define AVOID_TIME		4
 
@@ -136,8 +136,8 @@ rmove()
     for (i = 0; i < 50; i++) {
 	double  he_x, he_y, area;
 
-	he_x = enemy->p_x + cos[enemy->p_dir] * enemy->p_speed * i * WARP1;
-	he_y = enemy->p_y + sin[enemy->p_dir] * enemy->p_speed * i * WARP1;
+	he_x = enemy->p_x + cos(enemy->p_dir) * enemy->p_speed * i * WARP1;
+	he_y = enemy->p_y + sin(enemy->p_dir) * enemy->p_speed * i * WARP1;
 	area = i * me->p_ship.s_torpspeed * WARP1;
 	if (hypot(he_x - me->p_x, he_y - me->p_y) < area) {
 	    found = 1;
@@ -351,10 +351,10 @@ projectDamage(eNum, dirP)
 			continue;
 		tx = t->t_x; ty = t->t_y;
 		mx = me->p_x; my = me->p_y;
-		tdx = (double) t->t_speed * cos[t->t_dir] * WARP1;
-		tdy = (double) t->t_speed * sin[t->t_dir] * WARP1;
-		mdx = (double) me->p_speed * cos[me->p_dir] * WARP1;
-		mdy = (double) me->p_speed * sin[me->p_dir] * WARP1;
+		tdx = (double) t->t_speed * cos(t->t_dir) * WARP1;
+		tdy = (double) t->t_speed * sin(t->t_dir) * WARP1;
+		mdx = (double) me->p_speed * cos(me->p_dir) * WARP1;
+		mdy = (double) me->p_speed * sin(me->p_dir) * WARP1;
 		for (j = t->t_fuse; j > 0; j--) {
 			tx += tdx; ty += tdy;
 			mx += mdx; my += mdy;

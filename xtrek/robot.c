@@ -15,7 +15,7 @@ static char *rcsid_robot_c = "$Header: robot.c,v 10.1 86/11/30 15:28:01 jg Rel $
 
 Window mapw;				/* XXX */
 
-struct itimerval udt;
+static struct itimerval udt;
 int redrawall;
 int lastm;
 

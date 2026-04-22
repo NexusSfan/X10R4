@@ -452,21 +452,21 @@ static short ex_bits[5][256] = {
     }
 };
 
-Bitmap	expview[EX_FRAMES];
+static Bitmap	expview[EX_FRAMES];
 
 /**** These are the misc things ****/
 
-Bitmap fedview[VIEWS];
-Bitmap romview[VIEWS];
-Bitmap kliview[VIEWS];
-Bitmap oriview[VIEWS];
-Bitmap cloud;
-Bitmap etorp, mtorp;
-Bitmap bplanet;
-Bitmap mbplanet;
-Bitmap shield;
+static Bitmap fedview[VIEWS];
+static Bitmap romview[VIEWS];
+static Bitmap kliview[VIEWS];
+static Bitmap oriview[VIEWS];
+static Bitmap cloud;
+static Bitmap etorp, mtorp;
+static Bitmap bplanet;
+static Bitmap mbplanet;
+static Bitmap shield;
 
-Cursor crosshair;
+static Cursor crosshair;
 
 #define cloud_width 7
 #define cloud_height 7
@@ -541,8 +541,8 @@ static short shield_bits[] = {
    0x0004, 0x0002, 0x0008, 0x0001,
    0xc030, 0x0000, 0x3fc0, 0x0000};
 
-Pixmap	e_bplanetPix, a_bplanetPix;
-Pixmap	e_mbplanetPix, a_mbplanetPix;
+static Pixmap	e_bplanetPix, a_bplanetPix;
+static Pixmap	e_mbplanetPix, a_mbplanetPix;
 
 #define icon_width 70
 #define icon_height 70

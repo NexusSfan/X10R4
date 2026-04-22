@@ -16,7 +16,15 @@ extern FontInfo *dfontinfo;
 
 char *shipnos = "0123456789abcdef";
 extern char teamlet[];
+#ifndef __GNUC__
 extern double sin[], cos[];
+#define sin_wrap(sintofind) sin[sintofind]
+#define cos_wrap(costofind) cos[costofind]
+#else
+#include <math.h>
+#define sin_wrap(sintofind) sin(sintofind)
+#define cos_wrap(costofind) cos(costofind)
+#endif
 
 int clearzone[4][(MAXTORP + 1) * MAXPLAYER + MAXPLANETS];
 int clearcount;
@@ -234,8 +242,8 @@ local()
 	if (php->ph_status != PHFREE) {
 	    if (php->ph_status == PHMISS) {
 		/* Here I will have to compute end coordinate */
-		tx = j->p_x + PHASEDIST * cos[php->ph_dir];
-		ty = j->p_y + PHASEDIST * sin[php->ph_dir];
+		tx = j->p_x + PHASEDIST * cos_wrap(php->ph_dir);
+		ty = j->p_y + PHASEDIST * sin_wrap(php->ph_dir);
 		tx = (tx - me->p_x) / SCALE + WINSIDE / 2;
 		ty = (ty - me->p_y) / SCALE + WINSIDE / 2;
 		XLine(w, dx, dy, tx, ty, 1, 1, phaserColor(php),

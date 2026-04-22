@@ -13,7 +13,7 @@ static char *rcsid_main_c = "$Header: main.c,v 10.1 86/11/30 15:26:02 jg Rel $";
 #include "struct.h"
 #include "data.h"
 
-struct itimerval udt;
+static struct itimerval udt;
 jmp_buf env;
 long stime;
 int redrawall;

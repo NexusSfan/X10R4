@@ -18,12 +18,12 @@ extern Window messagew;
 
 int messpend;
 int lcount;
-char buf[80];
+static char buf[80];
 char addr;
 #define ADDRLEN 10
 char addrmesg[ADDRLEN];
 
-int lastcount;
+int lastcount_s;
 extern int mdisplayed;
 
 smessage(ichar)
@@ -36,7 +36,7 @@ char ichar;
     if (messpend == 0) {
 	messpend = 1;
 	if (mdisplayed) {
-	    XPixSet(messagew, 5, 5, dfontinfo->width * lastcount,
+	    XPixSet(messagew, 5, 5, dfontinfo->width * lastcount_s,
 		dfontinfo->height, backColor);
 	    mdisplayed = 0;
 	}

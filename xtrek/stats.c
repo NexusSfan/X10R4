@@ -7,6 +7,7 @@ static char *rcsid_stats_c = "$Header: stats.c,v 10.1 86/11/30 15:29:08 jg Rel $
 #include <stdio.h>
 #include "defs.h"
 #include "struct.h"
+#include "bitmaps.h"
 #include "data.h"
 
 #define	MIN(a,b)	(((a) < (b)) ? (a) : (b))
@@ -79,7 +80,6 @@ openStats(p)
 {
 	Window		w;
 	RECORD		*rp;
-	extern Cursor	crosshair;
 
 	w = XCreateWindow(RootWindow, statX, statY, STAT_WIDTH, STAT_HEIGHT,
 		STAT_BORDER, foreTile, backTile);

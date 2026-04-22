@@ -10,7 +10,7 @@ X ?= Xnest
 all: programs libraries $(X)
 
 # programs
-PROGRAMS = xwm/xwm xwininfo/xwininfo xclock/xclock xdvi/xdvi xgedit/xgedit xinit/xinit bitmap/bitmap
+PROGRAMS = xwm/xwm xwininfo/xwininfo xclock/xclock xdvi/xdvi xgedit/xgedit xinit/xinit bitmap/bitmap xtrek/xtrek xtrek/watch/watch
 programs: $(PROGRAMS)
 
 xwm: xwm/xwm
@@ -40,6 +40,14 @@ xinit/xinit:
 bitmap: bitmap/bitmap
 bitmap/bitmap: Xlib/libX.a
 	cd bitmap; make
+
+xtrek: xtrek/xtrek
+xtrek/xtrek: Xlib/libX.a
+	cd xtrek; make
+
+xtrek/watch: xtrek/watch/watch
+xtrek/watch/watch: Xlib/libX.a
+	cd xtrek/watch; make
 
 # X servers
 
@@ -77,6 +85,8 @@ clean:
 	cd libnest; make clean
 	cd libnest11; make clean
 	cd xwm; make clean
+	cd xtrek; make clean
+	cd xtrek/watch; make clean
 	cd bitmap; make clean
 	cd xwininfo; make clean
 	cd xclock; make clean

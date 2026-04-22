@@ -7,8 +7,11 @@
 #include "../defs.h"
 #include "../struct.h"
 #include "../data.h"
+#ifdef __GNUC__
+#include <stdio.h>
+#endif
 
-struct itimerval udt;
+static struct itimerval udt;
 int redrawall;
 extern Window w, mapw, statwin;
 

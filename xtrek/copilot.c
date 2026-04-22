@@ -14,7 +14,7 @@ static char *rcsid_copilot_c = "$Header: copilot.c,v 10.1 86/11/30 15:23:01 jg R
 #include "struct.h"
 #include "data.h"
 
-struct itimerval udt;
+static struct itimerval udt;
 jmp_buf env;
 long stime;
 int redrawall;

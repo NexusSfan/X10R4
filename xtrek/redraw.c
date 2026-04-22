@@ -5,6 +5,7 @@ static char *rcsid_redraw_c = "$Header: redraw.c,v 10.1 86/11/30 15:27:33 jg Rel
 
 #include <X/Xlib.h>
 #include <stdio.h>
+#include <math.h>
 #include <signal.h>
 #include "defs.h"
 #include "struct.h"
@@ -19,7 +20,6 @@ extern Window w, mapw, statwin, warnw, tstatw, baseWin;
 
 char *shipnos = "0123456789abcdef";
 extern char teamlet[];
-extern double sin[], cos[], atan2(), hypot();
 
 int clearzone[4][(MAXTORP + 1) * MAXPLAYER + MAXPLANETS];
 int clearcount;
@@ -203,8 +203,8 @@ local()
 	if (php->ph_status != PHFREE) {
 	    if (php->ph_status == PHMISS) {
 		/* Here I will have to compute end coordinate */
-		tx = j->p_x + PHASEDIST * cos[php->ph_dir];
-		ty = j->p_y + PHASEDIST * sin[php->ph_dir];
+		tx = j->p_x + PHASEDIST * cos(php->ph_dir);
+		ty = j->p_y + PHASEDIST * sin(php->ph_dir);
 		tx = (tx - me->p_x) / SCALE + WINSIDE / 2;
 		ty = (ty - me->p_y) / SCALE + WINSIDE / 2;
 		XLine(w, dx, dy, tx, ty, 1, 1, phaserColor(php),

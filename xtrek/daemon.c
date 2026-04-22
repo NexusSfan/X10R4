@@ -17,8 +17,8 @@ static char *rcsid_daemon_c = "$Header: daemon.c,v 10.1 86/11/30 15:23:25 jg Rel
 #include "defs.h"
 #include "struct.h"
 #include "data.h"
-#include "sintab.h"
 #include "planets.h"
+#include <math.h>
 
 #define fuse(X) ((ticks % (X)) == 0)
 /* Run the game */
@@ -26,7 +26,7 @@ static char *rcsid_daemon_c = "$Header: daemon.c,v 10.1 86/11/30 15:23:25 jg Rel
 double sqrt();
 double pow();
 double hypot();
-struct itimerval udt;
+static struct itimerval udt;
 int pshmid;
 int tshmid;
 int stshmid;
@@ -41,7 +41,9 @@ jmp_buf env;
 
 int tcount[MAXTEAM + 1];
 
-struct smem smbuf;
+struct shmid_ds smbuf;
+
+# define NSIG	_NSIG
 
 main(argc, argv)
 int argc;
@@ -98,8 +100,8 @@ char **argv;
     }
     /* Hose Ed's robots */
     shmctl(pshmid, IPC_STAT, &smbuf);
-    smbuf.sm_perm.uid = geteuid();
-    smbuf.sm_perm.mode = 0700;
+    smbuf.shm_perm.uid = geteuid();
+    smbuf.shm_perm.mode = 0700;
     shmctl(pshmid, IPC_SET, &smbuf);
 
     tshmid = shmget(TKEY, sizeof(struct torp) * MAXPLAYER * MAXTORP,
@@ -401,9 +403,9 @@ udplayers()
 		    j->p_dir += 2;
 		    j->p_desdir = j->p_dir;
 		    j->p_x = planets[j->p_planet].pl_x + ORBDIST
-			* cos[(unsigned char) (j->p_dir - (unsigned char) 64)];
+			* cos((unsigned char) (j->p_dir - (unsigned char) 64));
 		    j->p_y = planets[j->p_planet].pl_y + ORBDIST
-			* sin[(unsigned char) (j->p_dir - (unsigned char) 64)];
+			* sin((unsigned char) (j->p_dir - (unsigned char) 64));
 		}
 
 		/* Move player through space */
@@ -438,8 +440,8 @@ udplayers()
 		    j->p_fuel -= j->p_ship.s_warpcost * j->p_speed;
 		    j->p_etemp += j->p_speed;
 
-		    j->p_x += (double) j->p_speed * cos[j->p_dir] * WARP1;
-		    j->p_y += (double) j->p_speed * sin[j->p_dir] * WARP1;
+		    j->p_x += (double) j->p_speed * cos(j->p_dir) * WARP1;
+		    j->p_y += (double) j->p_speed * sin(j->p_dir) * WARP1;
 
 		    /* Bounce off the side of the galaxy */
 		    if (j->p_x < 0) {
@@ -546,7 +548,7 @@ udtorps()
 		continue;
 	    case TMOVE:
 	    case TSTRAIGHT:
-		j->t_x += (double) j->t_speed * cos[j->t_dir] * WARP1;
+		j->t_x += (double) j->t_speed * cos(j->t_dir) * WARP1;
 		if (j->t_x < 0) {
 		    j->t_x = 0;
 		    explode(j);
@@ -557,7 +559,7 @@ udtorps()
 		    explode(j);
 		    break;
 		}
-		j->t_y += (double) j->t_speed * sin[j->t_dir] * WARP1;
+		j->t_y += (double) j->t_speed * sin(j->t_dir) * WARP1;
 		if (j->t_y < 0) {
 		    j->t_y = 0;
 		    explode(j);
@@ -578,12 +580,12 @@ udtorps()
 		}
 		break;
 	    case TDET:
-		j->t_x += (double) j->t_speed * cos[j->t_dir] * WARP1;
+		j->t_x += (double) j->t_speed * cos(j->t_dir) * WARP1;
 		if (j->t_x < 0)
 		    j->t_x += GWIDTH;
 		else if (j->t_x > GWIDTH)
 		    j->t_x -= GWIDTH;
-		j->t_y += (double) j->t_speed * sin[j->t_dir] * WARP1;
+		j->t_y += (double) j->t_speed * sin(j->t_dir) * WARP1;
 		if (j->t_y < 0)
 		    j->t_y += GWIDTH;
 		else if (j->t_y > GWIDTH)
@@ -1076,7 +1078,7 @@ struct player *winner;
 		if (random() % 2 == 0)
 		    planets[i].pl_flags |= PLFUEL;
 	    }
-	    longjmp(env);
+	    longjmp(env, 0);
 	}
     }
 }

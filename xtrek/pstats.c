@@ -18,7 +18,7 @@ static char *rcsid_pstats_c = "$Header: pstats.c,v 10.1 86/11/30 15:27:21 jg Rel
 
 int fd;
 struct stats old;
-struct rusage buf;
+static struct rusage buf;
 long now;
 extern long stime;
 extern double oldmax;

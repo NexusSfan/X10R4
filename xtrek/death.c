@@ -18,7 +18,7 @@ extern Window w, mapw, statwin, baseWin;
 extern int oldalert;
 extern char teamlet[];
 extern jmp_buf env;
-struct itimerval udt;
+static struct itimerval udt;
 double oldmax = 0;
 
 death()

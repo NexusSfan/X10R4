@@ -7,12 +7,12 @@ static char *rcsid_orbit_c = "$Header: orbit.c,v 10.1 86/11/30 15:26:24 jg Rel $
 
 #include <stdio.h>
 #include <sys/types.h>
+#include <math.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include "defs.h"
 #include "struct.h"
 #include "data.h"
-#include "sintab.h"
 
 /* orbit a planet */
 
@@ -41,8 +41,8 @@ orbit()
 	l->pl_info |= me->p_team;
 	me->p_dir = dir + 64;
 	me->p_flags |= PFORBIT;
-	me->p_x = l->pl_x + ORBDIST * cos[dir];
-	me->p_y = l->pl_y + ORBDIST * sin[dir];
+	me->p_x = l->pl_x + ORBDIST * cos(dir);
+	me->p_y = l->pl_y + ORBDIST * sin(dir);
 	me->p_speed = me->p_desspeed = 0;
 	me->p_planet = l->pl_no;
 	return;
